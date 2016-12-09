@@ -23,17 +23,19 @@ package 'curl' do
 end
 
 # Set variables by platform
+version = node['mongodb3']['config']['mms']['agent_version']
+host = node['mongodb3']['config']['mms']['agent_download_host']
 case node['platform_family']
   when 'rhel', 'fedora'
-    mms_agent_source = 'https://cloud.mongodb.com/download/agent/automation/mongodb-mms-automation-agent-manager-latest.x86_64.rpm'
-    mms_agent_file = '/root/mongodb-mms-automation-agent-manager-latest.x86_64.rpm'
+    mms_agent_source = "#{host}/download/agent/automation/mongodb-mms-automation-agent-manager-#{version}.x86_64.rpm"
+    mms_agent_file = "/root/mongodb-mms-automation-agent-manager-#{version}.x86_64.rpm"
   when 'debian'
     if node['platform'] == 'ubuntu' && node['platform_version'].to_f >= 15.04
-      mms_agent_source = 'https://cloud.mongodb.com/download/agent/automation/mongodb-mms-automation-agent-manager_latest_amd64.ubuntu1604.deb'
-      mms_agent_file = '/root/mongodb-mms-automation-agent-manager_latest_amd64.ubuntu1604.deb'
+      mms_agent_source = "#{host}/download/agent/automation/mongodb-mms-automation-agent-manager_#{version}_amd64.ubuntu1604.deb"
+      mms_agent_file = "/root/mongodb-mms-automation-agent-manager_#{version}_amd64.ubuntu1604.deb"
     else
-      mms_agent_source = 'https://cloud.mongodb.com/download/agent/automation/mongodb-mms-automation-agent-manager_latest_amd64.deb'
-      mms_agent_file = '/root/mongodb-mms-automation-agent-manager_latest_amd64.deb'
+      mms_agent_source = "#{host}/download/agent/automation/mongodb-mms-automation-agent-manager_#{version}_amd64.deb"
+      mms_agent_file = "/root/mongodb-mms-automation-agent-manager_#{version}_amd64.deb"
     end
 end
 

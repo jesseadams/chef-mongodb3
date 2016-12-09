@@ -235,6 +235,8 @@ default['mongodb3']['config']['mms']['mmsConfigBackup'] = '/var/lib/mongodb-mms-
 default['mongodb3']['config']['mms']['logLevel'] = 'INFO'
 default['mongodb3']['config']['mms']['maxLogFiles'] = 10
 default['mongodb3']['config']['mms']['maxLogFileSize'] = 268435456
+default['mongodb3']['config']['mms']['agent_version'] = 'latest'
+default['mongodb3']['config']['mms']['agent_download_host'] = 'https://cloud.mongodb.com'
 
 ## Attributes for monitoring agent
 default['mongodb3']['config']['mms']['useSslForAllConnections'] = nil
